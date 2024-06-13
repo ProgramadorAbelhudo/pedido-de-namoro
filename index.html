@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+
+	<title> Leia! </title>
+
+	<style>
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: rgb(0, 0, 0);
+			color: rgb(255, 255, 255);
+			border: none;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+        body {
+
+	background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+	color: rgb(0, 0, 0);
+    margin: 0;
+	margin-bottom: 20px;
+	font-family: "Poppins", sans-serif;
+}
+
+.rodape {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+#sim {
+  margin-top: 20px;
+}
+
+		#nao {
+			margin-top: 20px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+		}
+
+		.popup {
+			font-family: "Poppins", sans-serif;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: white;
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+			display: none;
+			z-index: 3;
+			text-align: center;
+		}
+
+		.close {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			cursor: pointer;
+		}
+
+		.close:before {
+			content: "X";
+			font-size: 24px;
+}
+
+.warning {
+	font-family: "Poppins", sans-serif;
+	z-index: 1;
+}
+
+.w1 {
+	margin-bottom: -10;
+}
+
+.w2 {
+	margin-top: -10;
+}
+	</style>
+
+</head>
+
+<body>
+    <div class="centralizar">
+
+	<h1>Você aceita namorar comigo?</h1>
+
+	<div>
+		<button class="button" id="sim" onclick="showPopup()">Sim</button>
+        </div>
+		<button class="button" id="nao" onclick="moveButton()">Não</button>
+	</div>
+
+	<div class="popup" id="popup">
+		<p>Você disse sim! Eu tinha um palpite que diria - e ainda assim, a alegria é imensa. Agora, é com enorme satisfação que te considero meu namorado, junto com todos os sinônimos que essa palavra carrega!</p>
+		<p>Se desejar, sinta-se à vontade para clicar no botão “Conversaa” logo abaixo, que te encaminhará diretamente para uma conversa comigo no WhatsApp. ❤️</p>
+		<button class="button" id="comecar">Conversaa</button>
+		<div class="close" id="close"></div>
+	</div>
+
+	<div>
+		<footer class="rodape">
+			<h2 class="warning"; class="w1"> ⚠️ Este é um pedido provisório, o oficial vai ser muito melhor!</h2>
+			<p class="warning"; class="w2"> ps: não tem como negar o pedido kkkkk </p>
+		</footer>
+	</div>
+
+	<script>
+		function moveButton() {
+			const button = document.getElementById('nao');
+			const pageWidth = window.innerWidth;
+			const pageHeight = window.innerHeight;
+
+			const newX = Math.floor(Math.random() * (pageWidth - button.offsetWidth));
+			const newY = Math.floor(Math.random() * (pageHeight - button.offsetHeight));
+
+			button.style.left = newX + 'px';
+			button.style.top = newY + 'px';
+		}
+
+		
+		const simButton = document.getElementById('sim');
+		const popup = document.getElementById('popup');
+		const close = document.getElementById('close');
+		const comecarButton = document.getElementById('comecar');
+
+		simButton.addEventListener('click', () => {
+			popup.style.display = 'block';
+		});
+
+		close.addEventListener('click', () => {
+			popup.style.display = 'none';
+		});
+
+		comecarButton.addEventListener('click', () => {
+			window.open('https://wa.me/+5511933462787');
+		});
+	</script>
+
+</body>
+
+</html>
